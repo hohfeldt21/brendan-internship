@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
+import "aos/dist/aos.css";
 
 const fetchUrl =
   "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers";
@@ -35,7 +36,7 @@ const TopSellers = () => {
               {loading ? (
                 <>
                   {new Array(12).fill(0).map((_, index) => (
-                    <li key={index}>
+                    <li data-aos="fade-in" data-aos-delay="200" key={index}>
                       <div className="author_list_pp">
                         <Skeleton width={46} height={50} borderRadius={1000} />
                       </div>
@@ -51,7 +52,7 @@ const TopSellers = () => {
               ) : (
                 <>
                   {nfts.map((nft, index) => (
-                    <li key={index}>
+                    <li data-aos="fade-in" data-aos-delay="100" key={index}>
                       <div className="author_list_pp">
                         <Link to={`/author/${nft.authorId}`}>
                           <img
